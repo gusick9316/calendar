@@ -13,8 +13,16 @@
       "id": "notification_1755810418472_jy5oox3ta",
       "type": "chat_message",
       "from": "gusick",
-      "message": "gusick님이 메시지를 보냈습니다: ㄷ",
+      "message": "gusickëì´ ë©ìì§ë¥¼ ë³´ëìµëë¤: ã·",
       "createdAt": "2025-08-21T21:06:58.472Z",
+      "read": false
+    },
+    {
+      "id": "notification_1755810430014_kavjcxbw4",
+      "type": "chat_message",
+      "from": "gusick",
+      "message": "gusick님이 메시지를 보냈습니다: ?",
+      "createdAt": "2025-08-21T21:07:10.014Z",
       "read": false
     }
   ],
