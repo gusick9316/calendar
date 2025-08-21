@@ -7,5 +7,15 @@
     "events": []
   },
   "lastUpdated": "2025-08-21T09:27:23.417Z",
-  "memos": []
+  "memos": [],
+  "notifications": [
+    {
+      "id": "notification_1755810188230_1itsazau6",
+      "type": "friend_request",
+      "from": "gusick",
+      "message": "gusick님이 친구 요청을 보냈습니다.",
+      "createdAt": "2025-08-21T21:03:08.230Z",
+      "read": false
+    }
+  ]
 }
