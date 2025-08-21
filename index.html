@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>와즈달력</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- 로그인 화면 -->
+    <div id="loginScreen" class="screen active">
+        <div class="container">
+            <div class="login-box">
+                <h1 class="title">와즈달력</h1>
+                <form id="loginForm" class="form">
+                    <div class="input-group">
+                        <input type="text" id="loginUsername" placeholder="사용자명" required>
+                    </div>
+                    <div class="input-group">
+                        <input type="password" id="loginPassword" placeholder="비밀번호" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">로그인</button>
+                </form>
+                <p class="signup-link">
+                    계정이 없으신가요? 
+                    <a href="#" id="showSignup">그럼 새로 계정을 만드세요!</a>
+                </p>
+                <div id="loginError" class="error-message"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 회원가입 화면 -->
+    <div id="signupScreen" class="screen">
+        <div class="container">
+            <div class="signup-box">
+                <h1 class="title">와즈달력 - 회원가입</h1>
+                <form id="signupForm" class="form">
+                    <div class="input-group">
+                        <input type="text" id="signupUsername" placeholder="사용자명" required>
+                    </div>
+                    <div class="input-group">
+                        <input type="password" id="signupPassword" placeholder="비밀번호 (8-30자)" required>
+                    </div>
+                    <div class="input-group">
+                        <input type="password" id="signupPasswordConfirm" placeholder="비밀번호 재입력" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">가입</button>
+                    <button type="button" id="backToLogin" class="btn btn-secondary">로그인으로 돌아가기</button>
+                </form>
+                <div id="signupError" class="error-message"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 달력 화면 -->
+    <div id="calendarScreen" class="screen">
+        <div class="calendar-container">
+            <header class="calendar-header">
+                <div class="header-controls">
+                    <button id="prevMonth" class="nav-btn">‹</button>
+                    <h2 id="currentMonth"></h2>
+                    <button id="nextMonth" class="nav-btn">›</button>
+                </div>
+                <div class="header-actions">
+                    <button id="addEventBtn" class="btn btn-primary">메모 추가</button>
+                    <button id="viewEventsBtn" class="btn btn-secondary">메모 목록</button>
+                    <button id="logoutBtn" class="btn btn-logout">로그아웃</button>
+                </div>
+            </header>
+            
+            <div class="calendar-grid">
+                <div class="weekdays">
+                    <div class="weekday">일</div>
+                    <div class="weekday">월</div>
+                    <div class="weekday">화</div>
+                    <div class="weekday">수</div>
+                    <div class="weekday">목</div>
+                    <div class="weekday">금</div>
+                    <div class="weekday">토</div>
+                </div>
+                <div id="calendarDays" class="days"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 일정 추가/수정 모달 -->
+    <div id="eventModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modalTitle">메모 추가</h3>
+                <button id="closeModal" class="close-btn">&times;</button>
+            </div>
+            <form id="eventForm" class="form">
+                <div class="input-group">
+                    <label>시작 날짜</label>
+                    <input type="date" id="startDate" required>
+                </div>
+                <div class="input-group">
+                    <label>종료 날짜</label>
+                    <input type="date" id="endDate" required>
+                </div>
+                <div class="input-group">
+                    <label>색상</label>
+                    <div class="color-picker">
+                        <div class="color-option" data-color="#ff6b6b" style="background-color: #ff6b6b;"></div>
+                        <div class="color-option" data-color="#4ecdc4" style="background-color: #4ecdc4;"></div>
+                        <div class="color-option" data-color="#45b7d1" style="background-color: #45b7d1;"></div>
+                        <div class="color-option" data-color="#96ceb4" style="background-color: #96ceb4;"></div>
+                        <div class="color-option" data-color="#feca57" style="background-color: #feca57;"></div>
+                        <div class="color-option" data-color="#ff9ff3" style="background-color: #ff9ff3;"></div>
+                        <div class="color-option" data-color="#54a0ff" style="background-color: #54a0ff;"></div>
+                        <div class="color-option" data-color="#5f27cd" style="background-color: #5f27cd;"></div>
+                    </div>
+                    <input type="hidden" id="selectedColor" value="#ff6b6b">
+                </div>
+                <div class="input-group">
+                    <label>메모 내용 (최대 50자)</label>
+                    <textarea id="eventContent" maxlength="50" placeholder="메모 내용을 입력하세요..." required></textarea>
+                    <div class="char-count">0/50</div>
+                </div>
+                <div class="modal-actions">
+                    <button type="submit" class="btn btn-primary">저장</button>
+                    <button type="button" id="deleteEventBtn" class="btn btn-danger" style="display: none;">삭제</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- 일정 목록 모달 -->
+    <div id="eventsListModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>메모 목록</h3>
+                <button id="closeEventsListModal" class="close-btn">&times;</button>
+            </div>
+            <div id="eventsList" class="events-list"></div>
+        </div>
+    </div>
+
+    <!-- 일정 상세 모달 -->
+    <div id="eventDetailModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>메모 상세</h3>
+                <button id="closeEventDetailModal" class="close-btn">&times;</button>
+            </div>
+            <div id="eventDetail" class="event-detail"></div>
+            <div class="modal-actions">
+                <button id="editEventBtn" class="btn btn-primary">수정</button>
+                <button id="deleteEventDetailBtn" class="btn btn-danger">삭제</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/github-api.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/calendar.js"></script>
+    <script src="js/events.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
+
