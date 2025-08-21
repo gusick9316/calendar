@@ -2,5 +2,19 @@
   "username": "waz",
   "password": "123qazQAZ!@",
   "createdAt": "2025-08-21T09:23:43.596Z",
-  "timestamp": "20250821182343"
+  "timestamp": "20250821182343",
+  "userData": {
+    "events": [
+      {
+        "startDate": "2025-11-03",
+        "endDate": "2025-11-07",
+        "content": "학교 호주 글로벌 체험학습",
+        "color": "#96ceb4",
+        "createdAt": "2025-08-21T09:27:02.835Z",
+        "updatedAt": "2025-08-21T09:27:02.835Z",
+        "id": "mel76pirfwg2dljpre"
+      }
+    ]
+  },
+  "lastUpdated": "2025-08-21T09:27:03.441Z"
 }
