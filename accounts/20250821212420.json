@@ -2,7 +2,17 @@
   "username": "testuser123",
   "password": "testpass123",
   "createdAt": "2025-08-21T21:24:20.825Z",
-  "events": [],
+  "events": [
+    {
+      "id": "1755811644784bbgp5fusg",
+      "startDate": "2025-08-21",
+      "endDate": "2025-08-21",
+      "color": "#45B7D1",
+      "memo": "테스트 일정입니다",
+      "createdAt": "2025-08-21T21:27:24.784Z",
+      "updatedAt": "2025-08-21T21:27:24.784Z"
+    }
+  ],
   "friends": [],
   "notifications": []
 }
