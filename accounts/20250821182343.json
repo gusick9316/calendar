@@ -8,7 +8,16 @@
   },
   "lastUpdated": "2025-08-21T09:27:23.417Z",
   "memos": [],
-  "notifications": [],
+  "notifications": [
+    {
+      "id": "notification_1755810418472_jy5oox3ta",
+      "type": "chat_message",
+      "from": "gusick",
+      "message": "gusick님이 메시지를 보냈습니다: ㄷ",
+      "createdAt": "2025-08-21T21:06:58.472Z",
+      "read": false
+    }
+  ],
   "friends": [
     {
       "username": "gusick",
