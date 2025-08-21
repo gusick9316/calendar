@@ -14,7 +14,7 @@
       "id": "notification_1755810273440_ev1h6bpzc",
       "type": "friend_accepted",
       "from": "waz",
-      "message": "wazëì´ ì¹êµ¬ ìì²­ì ìë½íìµëë¤.",
+      "message": "wazÃ«ÂÂÃ¬ÂÂ´ Ã¬Â¹ÂÃªÂµÂ¬ Ã¬ÂÂÃ¬Â²Â­Ã¬ÂÂ Ã¬ÂÂÃ«ÂÂ½Ã­ÂÂÃ¬ÂÂµÃ«ÂÂÃ«ÂÂ¤.",
       "createdAt": "2025-08-21T21:04:33.440Z",
       "read": false
     },
@@ -22,8 +22,16 @@
       "id": "notification_1755810321162_7fx7qnqx9",
       "type": "chat_message",
       "from": "waz",
-      "message": "waz님이 메시지를 보냈습니다: Hu",
+      "message": "wazëì´ ë©ìì§ë¥¼ ë³´ëìµëë¤: Hu",
       "createdAt": "2025-08-21T21:05:21.162Z",
+      "read": false
+    },
+    {
+      "id": "notification_1755810342454_sws53vr4e",
+      "type": "chat_message",
+      "from": "waz",
+      "message": "waz님이 메시지를 보냈습니다: ?",
+      "createdAt": "2025-08-21T21:05:42.454Z",
       "read": false
     }
   ]
