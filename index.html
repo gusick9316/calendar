@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>와즈달력</title>
+    
+    <!-- PWA 메타 태그 -->
+    <meta name="description" content="심플하고 직관적인 웹 기반 달력 애플리케이션">
+    <meta name="keywords" content="달력, 일정관리, 메모, 친구, 채팅, 캘린더">
+    <meta name="author" content="Manus AI">
+    <meta name="theme-color" content="#667eea">
+    <meta name="msapplication-TileColor" content="#667eea">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="와즈달력">
+    <meta name="mobile-web-app-capable" content="yes">
+    
+    <!-- 매니페스트 링크 -->
+    <link rel="manifest" href="manifest.json">
+    
+    <!-- 파비콘 -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDgiIGhlaWdodD0iNDgiIHZpZXdCb3g9IjAgMCA0OCA0OCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjQ4IiBoZWlnaHQ9IjQ4IiByeD0iMTIiIGZpbGw9IiM2NjdlZWEiLz4KPHN2ZyB4PSI4IiB5PSI4IiB3aWR0aD0iMzIiIGhlaWdodD0iMzIiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSI+CjxwYXRoIGQ9Ik0xOSAzSDVDMy44OSAzIDMgMy44OSAzIDVWMTlDMyAyMC4xMSAzLjg5IDIxIDUgMjFIMTlDMjAuMTEgMjEgMjEgMjAuMTEgMjEgMTlWNUMyMSAzLjg5IDIwLjExIDMgMTkgM1pNMTkgMTlINVY4SDE5VjE5WiIgZmlsbD0id2hpdGUiLz4KPHN2ZyB4PSI2IiB5PSIxMCIgd2lkdGg9IjEyIiBoZWlnaHQ9IjgiIHZpZXdCb3g9IjAgMCAxMiA4Ij4KPGNpcmNsZSBjeD0iMiIgY3k9IjIiIHI9IjEiIGZpbGw9IndoaXRlIi8+CjxjaXJjbGUgY3g9IjYiIGN5PSIyIiByPSIxIiBmaWxsPSJ3aGl0ZSIvPgo8Y2lyY2xlIGN4PSIxMCIgY3k9IjIiIHI9IjEiIGZpbGw9IndoaXRlIi8+CjxjaXJjbGUgY3g9IjIiIGN5PSI2IiByPSIxIiBmaWxsPSJ3aGl0ZSIvPgo8Y2lyY2xlIGN4PSI2IiBjeT0iNiIgcj0iMSIgZmlsbD0iI2ZmNmI2YiIvPgo8Y2lyY2xlIGN4PSIxMCIgY3k9IjYiIHI9IjEiIGZpbGw9IndoaXRlIi8+Cjwvc3ZnPgo8L3N2Zz4KPC9zdmc+">
+    
+    <!-- Apple Touch 아이콘 -->
+    <link rel="apple-touch-icon" href="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTkyIiBoZWlnaHQ9IjE5MiIgdmlld0JveD0iMCAwIDE5MiAxOTIiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIxOTIiIGhlaWdodD0iMTkyIiByeD0iNDgiIGZpbGw9IiM2NjdlZWEiLz4KPHN2ZyB4PSIzMiIgeT0iMzIiIHdpZHRoPSIxMjgiIGhlaWdodD0iMTI4IiB2aWV3Qm94PSIwIDAgMjQgMjQiIGZpbGw9Im5vbmUiPgo8cGF0aCBkPSJNMTkgM0g1QzMuODkgMyAzIDMuODkgMyA1VjE5QzMgMjAuMTEgMy44OSAyMSA1IDIxSDE5QzIwLjExIDIxIDIxIDIwLjExIDIxIDE5VjVDMjEgMy44OSAyMC4xMSAzIDE5IDNaTTE5IDE5SDVWOEgxOVYxOVoiIGZpbGw9IndoaXRlIi8+CjxzdmcgeD0iMTYiIHk9IjI2IiB3aWR0aD0iMzIiIGhlaWdodD0iMjAiIHZpZXdCb3g9IjAgMCAzMiAyMCI+CjxjaXJjbGUgY3g9IjUiIGN5PSI1IiByPSI0IiBmaWxsPSJ3aGl0ZSIvPgo8Y2lyY2xlIGN4PSIxNiIgY3k9IjUiIHI9IjQiIGZpbGw9IndoaXRlIi8+CjxjaXJjbGUgY3g9IjI3IiBjeT0iNSIgcj0iNCIgZmlsbD0id2hpdGUiLz4KPGNpcmNsZSBjeD0iNSIgY3k9IjE1IiByPSI0IiBmaWxsPSJ3aGl0ZSIvPgo8Y2lyY2xlIGN4PSIxNiIgY3k9IjE1IiByPSI0IiBmaWxsPSIjZmY2YjZiIi8+CjxjaXJjbGUgY3g9IjI3IiBjeT0iMTUiIHI9IjQiIGZpbGw9IndoaXRlIi8+Cjwvc3ZnPgo8L2c+Cjwvc3ZnPgo8L2c+Cjwvc3ZnPg==">
+    
+    <!-- Open Graph 메타 태그 -->
+    <meta property="og:title" content="와즈달력">
+    <meta property="og:description" content="심플하고 직관적인 웹 기반 달력 애플리케이션">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://gusick9316.github.io/calendar/">
+    <meta property="og:image" content="https://gusick9316.github.io/calendar/manifest.json">
+    
+    <!-- Twitter Card 메타 태그 -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="와즈달력">
+    <meta name="twitter:description" content="심플하고 직관적인 웹 기반 달력 애플리케이션">
+    
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- 로그인 화면 -->
+    <div id="loginScreen" class="screen active">
+        <div class="container">
+            <div class="login-box">
+                <h1 class="title">와즈달력</h1>
+                <form id="loginForm" class="form">
+                    <div class="input-group">
+                        <input type="text" id="loginUsername" placeholder="사용자명" required>
+                    </div>
+                    <div class="input-group">
+                        <input type="password" id="loginPassword" placeholder="비밀번호" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">로그인</button>
+                </form>
+                <p class="signup-link">
+                    계정이 없으신가요? <a href="#" id="showSignup">그럼 새로 계정을 만드세요!</a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 회원가입 화면 -->
+    <div id="signupScreen" class="screen">
+        <div class="container">
+            <div class="signup-box">
+                <h1 class="title">와즈달력 - 회원가입</h1>
+                <form id="signupForm" class="form">
+                    <div class="input-group">
+                        <input type="text" id="signupUsername" placeholder="사용자명" required>
+                    </div>
+                    <div class="input-group">
+                        <input type="password" id="signupPassword" placeholder="비밀번호 (8-30자)" required>
+                    </div>
+                    <div class="input-group">
+                        <input type="password" id="signupPasswordConfirm" placeholder="비밀번호 재입력" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">가입</button>
+                </form>
+                <p class="login-link">
+                    <a href="#" id="showLogin">로그인으로 돌아가기</a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 달력 화면 -->
+    <div id="calendarScreen" class="screen">
+        <div class="calendar-container">
+            <!-- 헤더 -->
+            <header class="calendar-header">
+                <div class="header-left">
+                    <h1 class="calendar-title">와즈달력</h1>
+                    <span id="currentUser" class="user-info"></span>
+                </div>
+                <div class="header-right">
+                    <button id="memoListBtn" class="btn btn-secondary">메모 목록</button>
+                    <button id="friendsBtn" class="btn btn-secondary">친구</button>
+                    <button id="notificationsBtn" class="btn btn-secondary">알림</button>
+                    <button id="logoutBtn" class="btn btn-outline">로그아웃</button>
+                </div>
+            </header>
+
+            <!-- 달력 네비게이션 -->
+            <div class="calendar-nav">
+                <button id="prevMonth" class="nav-btn">&lt;</button>
+                <h2 id="currentMonth" class="month-title"></h2>
+                <button id="nextMonth" class="nav-btn">&gt;</button>
+            </div>
+
+            <!-- 달력 그리드 -->
+            <div class="calendar-grid">
+                <div class="calendar-header-row">
+                    <div class="day-header">일</div>
+                    <div class="day-header">월</div>
+                    <div class="day-header">화</div>
+                    <div class="day-header">수</div>
+                    <div class="day-header">목</div>
+                    <div class="day-header">금</div>
+                    <div class="day-header">토</div>
+                </div>
+                <div id="calendarDays" class="calendar-days"></div>
+            </div>
+
+            <!-- 메모 추가 버튼 -->
+            <button id="addMemoBtn" class="add-memo-btn">+ 메모 추가</button>
+        </div>
+    </div>
+
+    <!-- 메모 추가/수정 모달 -->
+    <div id="memoModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="memoModalTitle">메모 추가</h3>
+                <button class="close-btn" id="closeMemoModal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="date-selection">
+                    <div class="date-group">
+                        <label>시작 날짜</label>
+                        <input type="date" id="startDate" required>
+                    </div>
+                    <div class="date-group">
+                        <label>종료 날짜</label>
+                        <input type="date" id="endDate" required>
+                    </div>
+                </div>
+                <div class="color-selection">
+                    <label>색상 선택</label>
+                    <div class="color-options">
+                        <div class="color-option" data-color="#ff6b6b" style="background-color: #ff6b6b;"></div>
+                        <div class="color-option" data-color="#4ecdc4" style="background-color: #4ecdc4;"></div>
+                        <div class="color-option" data-color="#45b7d1" style="background-color: #45b7d1;"></div>
+                        <div class="color-option" data-color="#96ceb4" style="background-color: #96ceb4;"></div>
+                        <div class="color-option" data-color="#feca57" style="background-color: #feca57;"></div>
+                        <div class="color-option" data-color="#ff9ff3" style="background-color: #ff9ff3;"></div>
+                        <div class="color-option" data-color="#54a0ff" style="background-color: #54a0ff;"></div>
+                        <div class="color-option" data-color="#5f27cd" style="background-color: #5f27cd;"></div>
+                    </div>
+                </div>
+                <div class="memo-content">
+                    <label>메모 내용 (50자 이내)</label>
+                    <textarea id="memoText" maxlength="50" placeholder="메모를 입력하세요..."></textarea>
+                    <div class="char-count">
+                        <span id="charCount">0</span>/50
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button id="saveMemoBtn" class="btn btn-primary">저장</button>
+                <button id="cancelMemoBtn" class="btn btn-secondary">취소</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 메모 목록 모달 -->
+    <div id="memoListModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>메모 목록</h3>
+                <button class="close-btn" id="closeMemoListModal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div id="memoList" class="memo-list"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 친구 모달 -->
+    <div id="friendsModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>친구</h3>
+                <button class="close-btn" id="closeFriendsModal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="friend-search">
+                    <input type="text" id="friendSearch" placeholder="사용자명으로 검색">
+                    <button id="searchFriendBtn" class="btn btn-primary">검색</button>
+                </div>
+                <div id="friendsList" class="friends-list"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 알림 모달 -->
+    <div id="notificationsModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>알림</h3>
+                <button class="close-btn" id="closeNotificationsModal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div id="notificationsList" class="notifications-list"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 채팅 모달 -->
+    <div id="chatModal" class="modal">
+        <div class="modal-content chat-content">
+            <div class="modal-header">
+                <h3 id="chatTitle">채팅</h3>
+                <button class="close-btn" id="closeChatModal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div id="chatMessages" class="chat-messages"></div>
+                <div class="chat-input">
+                    <input type="text" id="chatInput" placeholder="메시지를 입력하세요... (150자 이내)" maxlength="150">
+                    <button id="sendMessageBtn" class="btn btn-primary">전송</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 로딩 스피너 -->
+    <div id="loadingSpinner" class="loading-spinner">
+        <div class="spinner"></div>
+    </div>
+
+    <!-- 알림 토스트 -->
+    <div id="toast" class="toast"></div>
+
+    <script src="js/config.js"></script>
+    <script src="js/github-api.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/calendar.js"></script>
+    <script src="js/memo.js"></script>
+    <script src="js/friends.js"></script>
+    <script src="js/chat.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
+
