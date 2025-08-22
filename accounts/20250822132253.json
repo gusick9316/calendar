@@ -2,7 +2,17 @@
   "username": "waz",
   "password": "123qazQAZ!@",
   "createdAt": "2025-08-22T04:22:53.989Z",
-  "memos": [],
+  "memos": [
+    {
+      "id": "memo_1755836618506_t1qjh50dx",
+      "startDate": "2025-11-03",
+      "endDate": "2025-11-08",
+      "content": "호주 글로벌 체험학습",
+      "color": "#54a0ff",
+      "createdAt": "2025-08-22T04:23:38.507Z",
+      "updatedAt": "2025-08-22T04:23:38.507Z"
+    }
+  ],
   "friends": [],
   "notifications": []
 }
